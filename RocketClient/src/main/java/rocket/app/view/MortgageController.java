@@ -1,8 +1,14 @@
 package rocket.app.view;
 
+
+
 import eNums.eAction;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import rocket.app.MainApp;
 import rocketCode.Action;
 import rocketData.LoanRequest;
@@ -12,6 +18,32 @@ public class MortgageController {
 	private MainApp mainApp;
 	
 	//	TODO - RocketClient.RocketMainController
+	private TextField txtIncome ;
+	private TextField txtExpenses ;
+	private TextField txtCreditScore ;
+	private TextField txtHouseCost ;
+	private ComboBox cmbTerm;
+	private Label Income ;
+	private Label MonthlyExpenses ;
+	private Label CreditScore ;
+	private Label CostofDesiredHouse ;
+	private Label ChooseTerm ;
+	private Button Payment;
+	private Label lblMortgagePayment;
+
+	private String dAmount;
+
+	private String dPayment;
+
+	private String dRate;
+
+	private String expenses;
+
+	private String iCreditScore;
+
+	private String iDownPayment;
+
+	private String iTerm;
 	
 	//	Create private instance variables for:
 	//		TextBox  - 	txtIncome
@@ -38,6 +70,13 @@ public class MortgageController {
 		
 		Action a = new Action(eAction.CalculatePayment);
 		LoanRequest lq = new LoanRequest();
+		lq.setdAmount( Double.parseDouble(dAmount));
+		lq.setdPayment(Double.parseDouble(dPayment));
+		lq.setdRate (Double.parseDouble(dRate));
+		lq.setExpenses (Double.parseDouble(expenses));
+		lq.setiCreditScore (Double.parseDouble(iCreditScore));
+		lq.setiDownPayment (Double.parseDouble(iDownPayment));
+		lq.setiTerm (Double.parseDouble(iTerm));
 		//	TODO - RocketClient.RocketMainController
 		//			set the loan request details...  rate, term, amount, credit score, downpayment
 		//			I've created you an instance of lq...  execute the setters in lq
@@ -55,6 +94,6 @@ public class MortgageController {
 		//			after it's returned back from the server, the payment (dPayment)
 		//			should be calculated.
 		//			Display dPayment on the form, rounded to two decimal places
-		
+		lblMortgagePayment.setText(dPayment);
 	}
 }

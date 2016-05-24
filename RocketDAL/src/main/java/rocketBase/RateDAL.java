@@ -1,6 +1,7 @@
 package rocketBase;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
@@ -24,7 +25,12 @@ public class RateDAL {
 		
 		try {
 			tx = session.beginTransaction();	
-			
+			Collections.sort(Database.RateDomainModel, Comparator<lstRates>(){
+			public long compare(RateDAL r1, RateDAL r2){
+				return r2.getAllRates().get(0).compareTo(r1.getAllRates().get(0));
+				
+			}
+			}
 			//TODO - RocketDALRateDAL.getAllRates
 			//			probably not a bad idea to sort the results...  Add an OrderBy
 			//			example can be found here:

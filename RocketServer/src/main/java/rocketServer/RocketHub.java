@@ -25,7 +25,13 @@ public class RocketHub extends Hub {
 			LoanRequest lq = (LoanRequest) message;
 			
 			//	TODO - RocketHub.messageReceived
-
+double r=RateBLL.getRate(double s);
+if(r!=null){
+	return RateBLL.getPayment(r)
+}
+else{
+	System.out.println("enter a vaild rate");
+}
 			//	You will have to:
 			//	Determine the rate with the given credit score (call RateBLL.getRate)
 			//		If exception, show error message, stop processing
